@@ -1,7 +1,8 @@
 from gaiasdk import sdk
+import logging
 
 def firstjob(arg):
-    print "First job has been executed!"
+    logging.info("First job has been executed!")
 
 def main():
     jobs = []
