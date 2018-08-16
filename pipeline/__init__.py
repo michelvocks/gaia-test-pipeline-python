@@ -5,6 +5,7 @@ def firstjob(arg):
     logging.info("First job has been executed!")
 
 def main():
+    logging.basicConfig(level=logging.INFO)
     jobs = []
     jobone = sdk.Job()
     jobone.title = "first job"
