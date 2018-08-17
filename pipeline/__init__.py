@@ -2,22 +2,21 @@ from gaiasdk import sdk
 import logging
 
 def firstjob(args):
+    logging.info("first job has been started")
     for arg in args:
         logging.info("Key:" + str(arg.key) + ";Value:" + str(arg.value))
 
 def secondjob(args):
+    logging.info("second job has been started")
     for arg in args:
         logging.info("Key:" + str(arg.key) + ";Value:" + str(arg.value))
 
 def main():
     logging.basicConfig(level=logging.INFO)
-    jobs = []
-    jobone = sdk.Job("first job", "First declared python job.", firstjob)
     argVault = sdk.Argument("", sdk.InputType.VaultInp, "dbpassword")
-    jobone.args.append(argVault)
-    jobtwo = sdk.Job("second job", "Second declared python job with param", secondjob)
+    jobone = sdk.Job("first job", "First declared python job.", firstjob, None, [argVault])
     argParam = sdk.Argument("Type in your username.", sdk.InputType.TextFieldInp, "username")
-    jobtwo.args.append(argParam)
-    jobs.append(jobone)
-    jobs.append(jobtwo)
-    sdk.serve(jobs)
+    jobtwo = sdk.Job("second job", "Second declared python job with param", secondjob, None, [argParam])
+    sdk.serve([jobone, jobtwo])
+
+main()
