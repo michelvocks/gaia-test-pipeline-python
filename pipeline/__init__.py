@@ -1,12 +1,16 @@
 from gaiasdk import sdk
 import logging
 
-def firstjob(self, args):
+def firstjob(args):
     logging.info("first job has been started")
+    if args == None:
+        logging.info("Args is none")
+    else:
+        logging.info("Args len " + str(len(args)))
     for arg in args:
         logging.info("Key:" + str(arg.key) + ";Value:" + str(arg.value))
 
-def secondjob(self, args):
+def secondjob(args):
     logging.info("second job has been started")
     for arg in args:
         logging.info("Key:" + str(arg.key) + ";Value:" + str(arg.value))
