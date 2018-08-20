@@ -22,5 +22,3 @@ def main():
     argParam = sdk.Argument("Type in your username.", sdk.InputType.TextFieldInp, "username")
     jobtwo = sdk.Job("second job", "Second declared python job with param", secondjob, None, [argParam])
     sdk.serve([jobone, jobtwo])
-
-main()
